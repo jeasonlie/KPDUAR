@@ -64,4 +64,12 @@ class BarangMasukController extends Controller
             return redirect()->route('barang');
         }
     }
+    
+    public function destroy($id) {
+        $barangmasuk = barangMasuk::find($id);
+        $barangmasuk->delete();
+
+        Session::flash('message','Barang keluar berhasil dihapus!');
+        return redirect()->route('barangMasuk');
+    }
 }
