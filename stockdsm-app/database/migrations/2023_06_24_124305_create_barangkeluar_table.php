@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('barangkeluar', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal_keluar');
-            $table->unsignBigInteger('id_barang');
-            $table->foreign('id_barang')->reference('id')->on('barang');
+            $table->unsignedBigInteger('id_barang');
+            $table->foreign('id_barang')->references('id')->on('barang');
             $table->integer('jumlah_barang');
             $table->text('keterangan_keluar');
             $table->timestamps();
