@@ -7,15 +7,19 @@
 <div class="input">
     <form action="{{ route('barang.store') }}" method="post">
         @csrf
-        <label for="">Nama Barang</label>
-        <input type="text" name="nama_barang" required>
+        <div class="namabarang">
+            <label for="">Nama Barang</label>
+            <input type="text" name="nama_barang" required>
+        </div>
+        <div class="kategori">
+            <label for="">Kategori</label>
+            <select name="id_kategori" id="">
+                @foreach($kategori as $value)
+                <option value="{{$value->id}}">{{$value->nama_kategori}}</option>
+                @endforeach
+            </select>
+        </div>
         <br>
-        <label for="">Kategori</label>
-        <select name="id_kategori" id="">
-            @foreach($kategori as $value)
-            <option value="{{$value->id}}">{{$value->nama_kategori}}</option>
-            @endforeach
-        </select>
         <button type="submit">Tambah</button>
     </form>
 </div>
@@ -26,7 +30,9 @@
             <th>No</th>
             <th>Nama Barang</th>
             <th>Kategori</th>
-            <th>Stok Barang</th>
+            <th>Barang Masuk</th>
+            <th>Barang Keluar</th>
+            <th>Total Stok</th>
             <th>Edit</th>
             <th>Hapus</th>
         </tr>
@@ -37,7 +43,9 @@
                 <td>{{$value->id}}</td>
                 <td>{{$value->nama_barang}}</td>
                 <td>{{$value->kategori->nama_kategori}}</td>
-                <td></td>
+                <td>{{$value->total_masuk}}</td>
+                <td>{{$value->total_keluar}}</td>
+                <td>{{$value->total_masuk-$value->total_keluar}}</td>
                 <td><a href="{{route('barang.edit', ['id' => $value->id]) }}">
                     <div class="edit">
                         Edit

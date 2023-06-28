@@ -13,4 +13,8 @@ class BarangMasuk extends Model
     public function User() {
         return $this->belongsTo(User::class,'id_user','id');
     }
+
+    public function BarangMasukDetail() {
+        return $this->hasMany(BarangMasukDetail::class,'id_barangmasuk','id');
+    }
 }

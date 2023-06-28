@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Barang;
 use App\Models\BarangKeluar;
+use App\Models\BarangKeluarDetail;
+use DB;
+use Session;
 
 class BarangKeluarController extends Controller
 {
     public function index() {
-        $barangkeluar = BarangKeluar::all();
-        return view('barangkeluar', compact('barangkeluar'));
+        $barangkeluar = BarangKeluar::with('BarangKeluarDetail', 'BarangKeluarDetail.Barang');
+        $barang = Barang::where('is_deleted', '=', '0')->get();
+        return view('barangkeluar.index', compact('barang','barangkeluar'));
     }
 
     public function store(Request $request) {
@@ -65,5 +71,19 @@ class BarangKeluarController extends Controller
             Session::flash('message','Barang keluar gagal disimpan!');
             return redirect()->route('barang');
         }
+
+    }
+    
+    public function show($id) {
+        $barangkeluar = barangKeluar::find($id);
+        return view('barangkeluar.show',compact('barangkeluar'));
+    }
+
+    public function destroy($id) {
+        $barangkeluar = barangKeluar::find($id);
+        $barangkeluar->delete();
+
+        Session::flash('message','Barang keluar berhasil dihapus!');
+        return redirect()->route('barangkeluar.index');
     }
 }

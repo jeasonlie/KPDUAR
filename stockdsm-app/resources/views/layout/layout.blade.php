@@ -56,6 +56,16 @@
             searching: true
         });
     });
+    $(document).ready( function () {
+        $('#input-barang').dataTable({
+            autoWidth: false,
+            compact: true,
+            scrollX: true,
+            searching: false, 
+            paging: false, 
+            info: false
+        });
+    });
 </script>
 @yield('script')
 </html>
