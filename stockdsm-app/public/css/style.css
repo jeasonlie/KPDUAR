@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.sidebar::-webkit-scrollbar, .content::-webkit-scrollbar {
+    background: transparent; /* Chrome/Safari/Webkit */
+    height: 0px;
+    width: 0px;
+  }
+      
+  .sidebar, .content {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+body{
+    display: flex;
+    overflow-y: none;
+}
+.sidebar {
+    display: flex;
+    background-color: #ffffff;
+    height: 100vh;
+    width: 20vw;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: scroll;
+}
+
+.sidebar-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: 0.2px;
+    padding-top: 10px;
+}
+.sidebar-logo img{
+    width: 135px;
+    height: auto;
+}
+.sidebar-namaperusahaan{
+    font-weight: 600;
+    padding-top: 10px;
+}
+.sidebar-menu {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding-top: 40px;
+    align-items: center;
+}
+.sidebar-menu>div {
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar-menu>div>a{
+    width: 70%;
+    display: flex;
+    color: black;
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar-menu>div>a:hover{
+    border-radius: 10px;
+    background-color: #7BAF66;
+    color: #ffffff;
+}
+.sidebar-user{
+    background-color: #7BAF66;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.sidebar-user>div{
+    padding-bottom: 10px;
+}
+.sidebar-user>.nama>.user{
+    color: #ffffff;
+}
+.sidebar-user>.logout>a{
+    color: #ffffff;
+}
+.content{
+    overflow: scroll;
+    background-color: #eeeaea;
+    height: 100vh;
+    width: 80vw;
+    padding-left: 60px;
+    padding-top: 10px;
+}
+.isi-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 50px;
+    margin-top: 40px;
+}
+.isi-content>div>a{
+    display: block;
+    height: 100px;
+    width: 200px;
+    padding-top: 5px;
+    padding-left: 10px;
+    color: #ffffff;
+}
+.isi-content>div{
+    border-radius: 10px;
+}
+.content-jumlah{
+    background-color: #7BAF66;
+    color: #ffffff;
+}
+.content-masuk{
+    background-color: #3C748B;
+    color: #ffffff;
+}
+.content-keluar{
+    background-color: #A66C7D;
+    color: #ffffff;
+}
+.judul-content{
+    margin-top: 10px;
+}
+.judul-content>.intro{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: -10px;
+}
+.title{
+    font-size: 50px;
+}
+.jumlah{
+    font-size: 55px;
+}
+#keluar{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+#isi td, #isi th{
+    border: 1px solid black;
+}
+
+.table table{
+    border: 1px solid black;
+}
+.detail{
+    width: 50px;
+    background-color: #3C748B;
+    border: 1px solid black;
+    outline: none;
+    color: #ffffff;
+    border-radius: 5px;
+}
+thead tr{
+    background-color: #7BAF66;
+    color: #ffffff;
+}
+#isi_length{
+    padding-bottom: 20px;
+}
+#isi_filter{
+    padding-bottom: 20px;
+}
+.dataTables_scrollBody{
+    background-color: #ffffff;
+}
+.dataTables_wrapper{
+    width: 90%;
+}
+.input-group{
+    padding-bottom: 20px;
+}
+.btn{
+    width: 50px;
+    border: 1px solid black;
+    outline: none;
+    background-color: #3C748B;
+    color: #ffffff;
+    border-radius: 5px;
+}

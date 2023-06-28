@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BarangKeluar;
 
 class BarangKeluarController extends Controller
 {
@@ -16,6 +17,7 @@ class BarangKeluarController extends Controller
             DB::beginTransaction();
             $barangkeluar = new barangKeluar();
             $barangkeluar->tanggal_keluar = $request->tanggal_keluar;
+            $barangkeluar->id_user = Auth::user()->id;
             $barangkeluar->save();
             
             for ($i=0; $i<count($request->barangKeluar); $i++) { 

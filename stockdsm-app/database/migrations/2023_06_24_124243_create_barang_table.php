@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
             $table->string('nama_barang');
-            $table->unsignedBigInteger('kategori');
-            $table->foreign('kategori')->references('id')->on('kategori');
+            $table->unsignedBigInteger('id_kategori');
+            $table->foreign('id_kategori')->references('id')->on('kategori');
+            $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });
     }
