@@ -82,7 +82,7 @@
                         Detail
                     </div>
                 </a></td>
-                <td><a href="{{route('barang.edit', ['id' => $value->id])}}">
+                <td><a href="{{route('barangmasuk.edit', ['id' => $value->id])}}">
                     <div class="edit">
                         Edit
                     </div>
@@ -141,8 +141,8 @@
             select.forEach(selectElement => {
                 let options = "";
                 options += `<option value="">Pilih Barang</option>`;
-                barangData.filter(item=> !barang.includes(item.id)).forEach(item => {
-                    options += `<option value="${item.id}">${item.nama_barang}</option>`
+                barangData.filter(value=> !barang.includes(value.id)).forEach(value => {
+                    options += `<option value="${value.id}">${value.nama_barang}</option>`
                 });
                 if (selectElement.value !== '') {
                     options +=`<option value="${selectElement.value}" selected>${selectElement.options[selectElement.selectedIndex].text}</option>`

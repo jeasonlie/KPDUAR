@@ -36,39 +36,42 @@ class BarangMasukController extends Controller
             }
 
             DB::commit();
-            Session::flash('message','Barang masuk berhasil disimpan!');
+            Session::flash('message','Barang Masuk berhasil disimpan!');
             return redirect()->route('barangmasuk.index');
 
         } catch (\Exception $error) {
             DB::rollBack();
-            Session::flash('message','Barang masuk gagal disimpan!');
+            Session::flash('message','Barang Masuk gagal disimpan!');
             return redirect()->route('barangmasuk.index');
         }
     }
 
-    public function update(Request $request) {
+    public function edit($id) {
+        $barangmasuk = barangMasuk::find($id);
+        return view('barangmasuk.edit',compact('barangmasuk'));
+    }
+
+    public function update(Request $request, $id) {
         try {
             DB::beginTransaction();
             $barangmasuk = barangMasuk::find($id);
             $barangmasuk->tanggal_masuk = $request->tanggal_masuk;
             $barangmasuk->save();
             
-            for ($i=0; $i<count($request->id_barang); $i++) { 
-                $barangmasukdetail = new barangMasukDetail();
-                $barangmasukdetail->id_barangmasuk = $barangmasuk->id;
-                $barangmasukdetail->id_barang = $request->id_barang[$i];
+            for ($i=0; $i<count($request->id); $i++) { 
+                $barangmasukdetail = barangMasukDetail::find($request->id[$i]);
                 $barangmasukdetail->jumlah_barang = $request->jumlah_barang[$i];
                 $barangmasukdetail->keterangan_masuk = $request->keterangan_masuk[$i];
                 $barangmasukdetail->save();
             }
 
             DB::commit();
-            Session::flash('message','Barang keluar berhasil disimpan!');
+            Session::flash('message','Barang Masuk berhasil disimpan!');
             return redirect()->route('barangmasuk.index');
             
         } catch (\Exception $error) {
             DB::rollBack();
-            Session::flash('message','Barang keluar gagal disimpan!');
+            Session::flash('message','Barang Masuk gagal disimpan!');
             return redirect()->route('barangmasuk.index');
         }
     }
@@ -82,7 +85,12 @@ class BarangMasukController extends Controller
         $barangmasuk = barangMasuk::find($id);
         $barangmasuk->delete();
 
-        Session::flash('message','Barang keluar berhasil dihapus!');
+        Session::flash('message','Barang Masuk berhasil dihapus!');
         return redirect()->route('barangmasuk.index');
+    }
+
+    public function print($id) {
+        $barangmasuk = barangMasuk::find($id);
+        return view('barangmasuk.print',compact('barangmasuk'));
     }
 }

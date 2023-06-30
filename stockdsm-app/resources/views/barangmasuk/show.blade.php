@@ -1,8 +1,8 @@
 @extends('layout.layout')
-@section('title', 'Barang Masuk')
+@section('title', 'Detail Barang Masuk')
 @section('content')
 
-<div class="title">Barang Masuk</div>
+<div class="title">Detail Barang Masuk</div>
 <br>
 <div class="kartu">
     <table>
@@ -32,6 +32,8 @@
         </tr>
     </table>
 </div>
+<br>
+<button onclick="print()">Print</button>
 <br><br><br>
 <table id="isiTabel">
     <thead>
@@ -51,10 +53,15 @@
                 <td>{{$value->id_barang}}</td>
                 <td>{{$value->barang->nama_barang}}</td>
                 <td>{{$value->barang->kategori->nama_kategori}}</td>
-                <td></td>
+                <td>{{$value->jumlah_barang}}</td>
                 <td>{{$value->keterangan_masuk}}</td>
             </tr>
         @endforeach
     </tbody>
 </table>
+<script>
+    function print() {
+        const newWindow = window.open("{{route('barangmasuk.print', ['id' => $barangmasuk->id])}}");
+    }
+</script>
 @endsection

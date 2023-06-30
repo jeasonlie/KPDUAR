@@ -7,18 +7,28 @@
 <div class="input">
     <form action="{{ route('barang.store') }}" method="post">
         @csrf
-        <div class="namabarang">
-            <label for="">Nama Barang</label>
-            <input type="text" name="nama_barang" required>
-        </div>
-        <div class="kategori">
-            <label for="">Kategori</label>
-            <select name="id_kategori" id="">
-                @foreach($kategori as $value)
-                <option value="{{$value->id}}">{{$value->nama_kategori}}</option>
-                @endforeach
-            </select>
-        </div>
+        <table class="tabel-form">
+            <tr>
+                <td>
+                <label for="">Nama Barang</label>
+                </td>
+                <td>
+                <input type="text" name="nama_barang" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="">Kategori</label>
+                </td>
+                <td>
+                    <select name="id_kategori" id="">
+                    @foreach($kategori as $value)
+                    <option value="{{$value->id}}">{{$value->nama_kategori}}</option>
+                    @endforeach
+                    </select>
+                </td>
+            </tr>
+        </table>
         <br>
         <button type="submit">Tambah</button>
     </form>

@@ -25,13 +25,14 @@
         </div>
         <div class="sidebar-menu">
             <div class="menu"><a href="/dashboard">Dashboard</a></div>
+            <div class="menu"><a href="/user">User</a></div>
             <div class="menu"><a href="/barang">Barang</a></div>
             <div class="menu"><a href="/barangmasuk">Barang Masuk</a></div>
             <div class="menu"><a href="/barangkeluar">Barang Keluar</a></div>
         </div>
         <div class="sidebar-user">
             <div class="nama">
-                
+                {{Auth::user()->name}}
             </div>
             <form id="keluar" method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -40,7 +41,7 @@
                     <img src="{{asset('logout.svg')}}" alt="">
                     Logout
                 </button>
-                </form>
+            </form>
         </div>
     </div>
     <div class="content">

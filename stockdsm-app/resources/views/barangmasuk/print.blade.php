@@ -1,12 +1,9 @@
-@extends('layout.layout')
-@section('title', 'Edit Barang Keluar')
+@extends('layout.print')
+@section('title', 'Print Laporan Barang Masuk')
 @section('content')
-
-<div class="title">Edit Barang Keluar</div>
 <br>
-<form action="{{ route('barangkeluar.update', ['id' => $barangkeluar->id]) }}" method="post">
-    @csrf
-    @method('patch')
+    <div class="title">Detail Barang Masuk</div>
+    <br>
     <div class="kartu">
         <table>
             <tr>
@@ -14,15 +11,15 @@
                     ID
                 </td>
                 <td>
-                &emsp;:&emsp;{{$barangkeluar->id}}
+                &emsp;:&emsp;{{$barangmasuk->id}}
                 </td>
             </tr>
             <tr>
                 <td>
-                    Tanggal Keluar
+                    Tanggal Masuk
                 </td>
                 <td>
-                &emsp;:&emsp;<input type="date" name="tanggal_keluar" id="" value="{{$barangkeluar->tanggal_keluar}}">
+                &emsp;:&emsp;{{$barangmasuk->tanggal_masuk}}
                 </td>
             </tr>
             <tr>
@@ -30,12 +27,7 @@
                     Diinput oleh
                 </td>
                 <td >
-                &emsp;:&emsp;{{$barangkeluar->User->name}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="submit">Simpan</button>
+                &emsp;:&emsp;{{$barangmasuk->User->name}}
                 </td>
             </tr>
         </table>
@@ -53,21 +45,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($barangkeluar->BarangKeluarDetail as $value)
+            @foreach($barangmasuk->BarangMasukDetail as $value)
                 <tr>
                     <td>{{$value->id}}</td>
                     <td>{{$value->id_barang}}</td>
                     <td>{{$value->barang->nama_barang}}</td>
                     <td>{{$value->barang->kategori->nama_kategori}}</td>
-                    <td><input type="text" name="jumlah_barang[]" value="{{$value->jumlah_barang}}"></td>
-                    <td>
-                        <input type="text" name="keterangan_keluar[]" value="{{$value->keterangan_keluar}}">
-                        <input type="hidden" name="id[]" value="{{$value->id}}">
-                        <input type="hidden" name="id_barang[]" value="{{$value->id_barang}}">
-                    </td>
+                    <td>{{$value->jumlah_barang}}</td>
+                    <td>{{$value->keterangan_masuk}}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-</form>
 @endsection

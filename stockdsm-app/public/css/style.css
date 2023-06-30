@@ -56,6 +56,7 @@ body{
     flex-direction: column;
     padding-top: 40px;
     align-items: center;
+    overflow-y: scroll;
 }
 .sidebar-menu>div {
     width: 100%;
@@ -139,7 +140,8 @@ body{
     margin-bottom: -10px;
 }
 .title{
-    font-size: 50px;
+    font-size: 60px;
+    font-weight: 600;
 }
 .jumlah{
     font-size: 55px;
@@ -196,4 +198,7 @@ thead tr{
     background-color: #3C748B;
     color: #ffffff;
     border-radius: 5px;
+}
+.dataTables_length{
+    padding-bottom: 10px;
 }

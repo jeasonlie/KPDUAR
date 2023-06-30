@@ -1,12 +1,9 @@
-@extends('layout.layout')
-@section('title', 'Edit Barang Keluar')
+@extends('layout.print')
+@section('title', 'Print Laporan Barang keluar')
 @section('content')
-
-<div class="title">Edit Barang Keluar</div>
 <br>
-<form action="{{ route('barangkeluar.update', ['id' => $barangkeluar->id]) }}" method="post">
-    @csrf
-    @method('patch')
+    <div class="title">Detail Barang Keluar</div>
+    <br>
     <div class="kartu">
         <table>
             <tr>
@@ -19,10 +16,10 @@
             </tr>
             <tr>
                 <td>
-                    Tanggal Keluar
+                    Tanggal keluar
                 </td>
                 <td>
-                &emsp;:&emsp;<input type="date" name="tanggal_keluar" id="" value="{{$barangkeluar->tanggal_keluar}}">
+                &emsp;:&emsp;{{$barangkeluar->tanggal_keluar}}
                 </td>
             </tr>
             <tr>
@@ -31,11 +28,6 @@
                 </td>
                 <td >
                 &emsp;:&emsp;{{$barangkeluar->User->name}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="submit">Simpan</button>
                 </td>
             </tr>
         </table>
@@ -59,15 +51,10 @@
                     <td>{{$value->id_barang}}</td>
                     <td>{{$value->barang->nama_barang}}</td>
                     <td>{{$value->barang->kategori->nama_kategori}}</td>
-                    <td><input type="text" name="jumlah_barang[]" value="{{$value->jumlah_barang}}"></td>
-                    <td>
-                        <input type="text" name="keterangan_keluar[]" value="{{$value->keterangan_keluar}}">
-                        <input type="hidden" name="id[]" value="{{$value->id}}">
-                        <input type="hidden" name="id_barang[]" value="{{$value->id_barang}}">
-                    </td>
+                    <td>{{$value->jumlah_barang}}</td>
+                    <td>{{$value->keterangan_keluar}}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-</form>
 @endsection
