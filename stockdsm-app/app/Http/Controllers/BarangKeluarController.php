@@ -40,7 +40,7 @@ class BarangKeluarController extends Controller
 
             DB::beginTransaction(); 
             $barangkeluar = new barangKeluar();
-            $barangkeluar->tanggal_keluar = $request->tanggal_keluar;
+            $barangkeluar->tanggal = $request->tanggal_keluar;
             $barangkeluar->id_user = Auth::user()->id;
             $barangkeluar->save();
 
@@ -94,7 +94,7 @@ class BarangKeluarController extends Controller
 
             DB::beginTransaction();
             $barangkeluar = barangKeluar::find($id);
-            $barangkeluar->tanggal_keluar = $request->tanggal_keluar;
+            $barangkeluar->tanggal = $request->tanggal_keluar;
             $barangkeluar->save();
             
             for ($i=0; $i<count($request->id); $i++) { 

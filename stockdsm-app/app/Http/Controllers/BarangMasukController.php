@@ -22,7 +22,7 @@ class BarangMasukController extends Controller
         try {
             DB::beginTransaction();
             $barangmasuk = new barangMasuk();
-            $barangmasuk->tanggal_masuk = $request->tanggal_masuk;
+            $barangmasuk->tanggal = $request->tanggal_masuk;
             $barangmasuk->id_user = Auth::user()->id;
             $barangmasuk->save();
             
@@ -55,7 +55,7 @@ class BarangMasukController extends Controller
         try {
             DB::beginTransaction();
             $barangmasuk = barangMasuk::find($id);
-            $barangmasuk->tanggal_masuk = $request->tanggal_masuk;
+            $barangmasuk->tanggal = $request->tanggal_masuk;
             $barangmasuk->save();
             
             for ($i=0; $i<count($request->id); $i++) { 

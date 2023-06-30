@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('barangmasuk', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_masuk');
+            $table->date('tanggal');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
