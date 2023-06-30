@@ -35,7 +35,7 @@
             <div class="nama" style="color: #FFFFFF">
                 {{Auth::user()->name}}
             </div>
-            <div onclick="modal_logout('{{ route('logout') }}')" style="cursor:pointer">
+            <div onclick="modal_logout('{{ route('logout') }}')" style="cursor:pointer; color:#FFFFFF">
                 <img src="{{asset('logout.svg')}}" alt="">
                 Logout
             </div>
