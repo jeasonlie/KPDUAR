@@ -31,7 +31,7 @@
             <div class="menu"><a href="/barangkeluar">Barang Keluar</a></div>
         </div>
         <div class="sidebar-user">
-            <div class="nama">
+            <div class="nama" style="color: #FFFFFF">
                 {{Auth::user()->name}}
             </div>
             <form id="keluar" method="POST" action="{{ route('logout') }}">
