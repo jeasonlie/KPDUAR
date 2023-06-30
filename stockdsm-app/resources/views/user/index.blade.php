@@ -59,12 +59,9 @@
                 </div>
             </a></td>
             <td>
-                <form method="post" action="{{route('user.destroy',['id'=>$value->id])}}">
-                    @csrf
-                    @method('delete')
-                    <input type="hidden" name="_method" value="delete">
-                    <button type="submit" class="btn">Hapus</button>
-                </form>
+                <div class="hapus" onclick="modal_delete('user',{{$value->id}}, '{{route('user.destroy', ['id'=> $value->id])}}')" style="cursor:pointer">
+                    Hapus
+                </div>
             </td>
         </tr>
         @endforeach

@@ -199,6 +199,7 @@ body{
     background-color: #3C748B;
     color: #ffffff;
     border-radius: 5px;
+    height: 30px;
 }
 .dataTables_length{
     padding-bottom: 10px;
@@ -233,4 +234,18 @@ body{
 
 .select-barang{
     width: 150px;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.hapus{
+    background-color: #A66C7D;
+    color: white;
+    width: fit-content;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 0px 10px;
 }
