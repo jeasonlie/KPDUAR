@@ -19,7 +19,7 @@
                     Tanggal keluar
                 </td>
                 <td>
-                &emsp;:&emsp;{{$barangkeluar->tanggal_keluar}}
+                &emsp;:&emsp;{{$barangkeluar->tanggal}}
                 </td>
             </tr>
             <tr>

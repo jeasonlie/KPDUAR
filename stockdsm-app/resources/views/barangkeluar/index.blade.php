@@ -74,7 +74,7 @@
         @foreach($barangkeluar as $value)
             <tr>
                 <td>{{$value->id}}</td>
-                <td>{{$value->tanggal_keluar}}</td>
+                <td>{{$value->tanggal}}</td>
                 <td>{{count($value->barangkeluardetail)}}</td>
                 <td>{{$value->User->name}}</td>
                 <td><a href="{{route('barangkeluar.show', ['id' => $value->id])}}">

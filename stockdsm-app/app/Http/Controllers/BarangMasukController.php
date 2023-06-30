@@ -13,7 +13,7 @@ use Session;
 class BarangMasukController extends Controller
 {
     public function index() {
-        $barangmasuk = BarangMasuk::with('BarangMasukDetail', 'BarangMasukDetail.Barang')->get();
+        $barangmasuk = BarangMasuk::with('BarangMasukDetail', 'BarangMasukDetail.Barang')->orderBy('tanggal', 'DESC')->get();
         $barang = Barang::where('is_deleted', '=', '0')->get();
         return view('barangmasuk.index', compact('barang','barangmasuk'));
     }

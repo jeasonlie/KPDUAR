@@ -22,7 +22,7 @@
                     Tanggal Masuk
                 </td>
                 <td>
-                &emsp;:&emsp;<input type="date" name="tanggal_masuk" id="" value="{{$barangmasuk->tanggal_masuk}}">
+                &emsp;:&emsp;<input type="date" name="tanggal_masuk" id="" value="{{$barangmasuk->tanggal}}">
                 </td>
             </tr>
             <tr>

@@ -19,7 +19,7 @@
                 Tanggal Masuk
             </td>
             <td>
-            &emsp;:&emsp;{{$barangmasuk->tanggal_masuk}}
+            &emsp;:&emsp;{{$barangmasuk->tanggal}}
             </td>
         </tr>
         <tr>
