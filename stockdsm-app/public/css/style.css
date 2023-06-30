@@ -165,14 +165,15 @@ body{
     border: 1px solid black;
 }
 .detail{
-    width: 50px;
+    padding: 0px 10px;
+    width: fit-content;
     background-color: #3C748B;
     border: 1px solid black;
     outline: none;
     color: #ffffff;
     border-radius: 5px;
 }
-thead tr{
+.dataTable thead tr{
     background-color: #7BAF66;
     color: #ffffff;
 }
@@ -201,4 +202,35 @@ thead tr{
 }
 .dataTables_length{
     padding-bottom: 10px;
+}
+
+.print{
+    padding-inline:20px;
+    background-color: #A66C7D;
+    border: none;
+    color: white;
+    outline: 2px solid #000000;
+    border-radius: 3px;
+}
+
+.edit{
+    background-color: #a6a66c;
+    color: white;
+    width: fit-content;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.btn-remove-row{
+    background-color: #A66C7D;
+    color: white;
+    width: fit-content;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.select-barang{
+    width: 150px;
 }

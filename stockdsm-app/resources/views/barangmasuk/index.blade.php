@@ -32,7 +32,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <select name="id_barang[]" required onchange="addBarangToArray(this)">
+                        <select class="select-barang" class="select-barang" name="id_barang[]" required onchange="addBarangToArray(this)">
                             <option value="">Pilih Barang</option>
                             @foreach ($barang as $value)
                                 <option value="{{$value->id}}">{{$value->nama_barang}}</option>
@@ -135,10 +135,19 @@
             barang.push(+evt.value);
             renderAllSelect(); 
         }
+        
+
+        var selectElements = document.querySelectorAll('.select-barang');
+
+        selectElements.forEach(function(selectElement) {
+            $(selectElement).select2();
+        });
 
         function renderAllSelect() {
             let select = document.querySelectorAll('select[name="id_barang[]"]');
             select.forEach(selectElement => {
+                $(selectElement).select2();
+                $(selectElement).select2('destroy');
                 let options = "";
                 options += `<option value="">Pilih Barang</option>`;
                 barangData.filter(value=> !barang.includes(value.id)).forEach(value => {
@@ -148,7 +157,7 @@
                     options +=`<option value="${selectElement.value}" selected>${selectElement.options[selectElement.selectedIndex].text}</option>`
                 }
                 selectElement.innerHTML = options;
-
+                $(selectElement).select2();
             });
         }
 
@@ -160,7 +169,7 @@
             let row = `
                 <tr>
                     <td>
-                        <select name="id_barang[]" required onchange="addBarangToArray(this)">
+                        <select class="select-barang" name="id_barang[]" required onchange="addBarangToArray(this)">
                             <option value="">Pilih Barang</option>
                             @foreach ($barang as $value)
                                 <option value="{{$value->id}}">{{$value->nama_barang}}</option>

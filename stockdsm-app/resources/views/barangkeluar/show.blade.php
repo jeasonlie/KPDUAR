@@ -33,7 +33,7 @@
     </table>
 </div>
 <br>
-<button onclick="print()">Print</button>
+<button class="print" onclick="print()">Print</button>
 <br><br><br>
 <table id="isiTabel">
     <thead>
