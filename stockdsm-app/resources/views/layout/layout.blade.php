@@ -58,6 +58,14 @@
         });
     });
     $(document).ready( function () {
+        $('#isiTabel2').dataTable({
+            autoWidth: false,
+            compact: true,
+            scrollX: true,
+            searching: true
+        });
+    });
+    $(document).ready( function () {
         $('#input-barang').dataTable({
             autoWidth: false,
             compact: true,

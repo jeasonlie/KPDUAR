@@ -34,6 +34,7 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
     Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
     Route::patch('/barang/update/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::get('/barang/show/{id}', [BarangController::class, 'show'])->name('barang.show');
     Route::delete('/barang/destory/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
 
     Route::get('/barangmasuk', [BarangMasukController::class, 'index'])->name('barangmasuk.index');
