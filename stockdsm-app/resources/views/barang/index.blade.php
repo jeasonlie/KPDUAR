@@ -41,7 +41,9 @@
             <th>ID Barang</th>
             <th>Nama Barang</th>
             <th>Kategori</th>
-            <th>Total Stok</th>
+            <th>Total Barang Masuk</th>
+            <th>Total Barang Keluar</th>
+            <th>Stok Sekarang</th>
             <th>Detail Stok</th>
             <th>Edit</th>
             <th>Hapus</th>
@@ -54,6 +56,8 @@
                 <td>{{$value->id_barangs}}</td>
                 <td>{{$value->nama_barang}}</td>
                 <td>{{$value->kategori->nama_kategori}}</td>
+                <td>{{$value->total_masuk}}</td>
+                <td>{{$value->total_keluar}}</td>
                 <td>{{number_format($value->total_masuk-$value->total_keluar, 0 ,',', '.')}}</td>
                 <td><a href="{{route('barang.show', ['id' => $value->id])}}">
                     <div class="detail">

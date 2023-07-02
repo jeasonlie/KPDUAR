@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('title', 'Barang')
 @section('content')
-<div class="title">Detail Stok</div>
+<div class="title">Detail Stok Barang</div>
 <br>
 <div class="kartu">
     <table>
