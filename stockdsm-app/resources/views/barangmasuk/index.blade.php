@@ -75,7 +75,7 @@
             <tr>
                 <td>{{$value->id}}</td>
                 <td>{{$value->tanggal}}</td>
-                <td>{{count($value->barangmasukdetail)}}</td>
+                <td>{{number_format(count($value->barangmasukdetail), 0 ,',', '.')}}</td>
                 <td>{{$value->User->name}}</td>
                 <td><a href="{{route('barangmasuk.show', ['id' => $value->id])}}">
                     <div class="detail">

@@ -47,12 +47,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($barang as $value)
+        @foreach($barang as $key => $value)
             <tr>
                 <td>{{$value->id}}</td>
                 <td>{{$value->nama_barang}}</td>
                 <td>{{$value->kategori->nama_kategori}}</td>
-                <td>{{$value->total_masuk-$value->total_keluar}}</td>
+                <td>{{number_format($value->total_masuk-$value->total_keluar, 0 ,',', '.')}}</td>
                 <td><a href="{{route('barang.show', ['id' => $value->id])}}">
                     <div class="detail">
                         Detail

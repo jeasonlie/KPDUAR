@@ -53,7 +53,7 @@
                 <td>{{$value->id_barang}}</td>
                 <td>{{$value->barang->nama_barang}}</td>
                 <td>{{$value->barang->kategori->nama_kategori}}</td>
-                <td>{{$value->jumlah_barang}}</td>
+                <td>{{number_format($value->jumlah_barang, 0 ,',', '.')}}</td>
                 <td>{{$value->keterangan_keluar}}</td>
             </tr>
         @endforeach

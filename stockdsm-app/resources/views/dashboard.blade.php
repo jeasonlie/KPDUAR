@@ -81,9 +81,21 @@
                 <td>{{$value->user->name}}</td>
                 <td>{{$value->keterangan}}</td>
                 @if ($value->keterangan == "Masuk")
-                    <td><a href="{{route('barangmasuk.show', ["id" => $value->id])}}">Detail</a></td>
+                    <td>
+                        <a href="{{route('barangmasuk.show', ["id" => $value->id])}}">
+                            <div class="detail">
+                                Detail
+                            </div>
+                        </a>
+                    </td>
                 @else
-                    <td><a href="{{route('barangkeluar.show', ["id" => $value->id])}}">Detail</a></td>
+                    <td>
+                        <a href="{{route('barangkeluar.show', ["id" => $value->id])}}">
+                            <div class="detail">
+                                Detail
+                            </div>
+                        </a>
+                    </td>
                 @endif
             </tr>
         @endforeach

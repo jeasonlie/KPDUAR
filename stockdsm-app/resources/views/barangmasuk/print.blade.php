@@ -11,7 +11,7 @@
                     ID
                 </td>
                 <td>
-                &emsp;:&emsp;{{$barangmasuk->id}}
+                    &emsp;:&emsp;{{$barangmasuk->id}}
                 </td>
             </tr>
             <tr>
@@ -19,7 +19,7 @@
                     Tanggal Masuk
                 </td>
                 <td>
-                &emsp;:&emsp;{{$barangmasuk->tanggal}}
+                    &emsp;:&emsp;{{$barangmasuk->tanggal}}
                 </td>
             </tr>
             <tr>
@@ -27,7 +27,7 @@
                     Diinput oleh
                 </td>
                 <td >
-                &emsp;:&emsp;{{$barangmasuk->User->name}}
+                    &emsp;:&emsp;{{$barangmasuk->User->name}}
                 </td>
             </tr>
         </table>

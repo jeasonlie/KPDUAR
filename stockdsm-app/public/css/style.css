@@ -249,3 +249,24 @@ body{
     border-radius: 5px;
     padding: 0px 10px;
 }
+
+.clickable-row{
+    cursor: pointer;
+}
+
+.clickable-row:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.flex-group{
+    display: flex;
+}
+
+.flex-group>div{
+    width: 50%;
+}
+
+.subheader{
+    font-size: 16px;
+    font-weight: bold;
+}

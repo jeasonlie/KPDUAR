@@ -50,19 +50,19 @@ class BarangController extends Controller
 
     public function show($id) {
         $barang = Barang::select('barang.*')->with('kategori')
-        ->leftJoin(DB::raw('(SELECT barangmasukdetail.id_barang, SUM(barangmasukdetail.jumlah_barang) AS total_masuk FROM barangmasukdetail GROUP BY barangmasukdetail.id_barang) AS masuk_detail'), 'masuk_detail.id_barang', '=', 'barang.id')
-        ->leftJoin(DB::raw('(SELECT barangkeluardetail.id_barang, SUM(barangkeluardetail.jumlah_barang) AS total_keluar FROM barangkeluardetail GROUP BY barangkeluardetail.id_barang) AS keluar_detail'), 'keluar_detail.id_barang', '=', 'barang.id')
-        ->selectRaw('IFNULL(masuk_detail.total_masuk, 0) AS total_masuk, IFNULL(keluar_detail.total_keluar, 0) AS total_keluar')
-        ->where('barang.id', '=', $id)
-        ->first();
+            ->leftJoin(DB::raw('(SELECT barangmasukdetail.id_barang, SUM(barangmasukdetail.jumlah_barang) AS total_masuk FROM barangmasukdetail GROUP BY barangmasukdetail.id_barang) AS masuk_detail'), 'masuk_detail.id_barang', '=', 'barang.id')
+            ->leftJoin(DB::raw('(SELECT barangkeluardetail.id_barang, SUM(barangkeluardetail.jumlah_barang) AS total_keluar FROM barangkeluardetail GROUP BY barangkeluardetail.id_barang) AS keluar_detail'), 'keluar_detail.id_barang', '=', 'barang.id')
+            ->selectRaw('IFNULL(masuk_detail.total_masuk, 0) AS total_masuk, IFNULL(keluar_detail.total_keluar, 0) AS total_keluar')
+            ->where('barang.id', '=', $id)
+            ->first();
         $barangmasuk = BarangMasuk::select('barangmasuk.*', 'bmd.*')
-        ->join(\DB::raw('(SELECT barangmasukdetail.id_barangmasuk, barangmasukdetail.id_barang, barangmasukdetail.jumlah_barang, barangmasukdetail.keterangan_masuk, barang.* FROM barangmasukdetail INNER JOIN barang ON barangmasukdetail.id_barang = barang.id  WHERE barangmasukdetail.id_barang = '.$id.') AS bmd'), 'bmd.id_barangmasuk', '=', 'barangmasuk.id')
-        ->orderBy('tanggal', 'DESC')
-        ->get();
+            ->join(\DB::raw('(SELECT barangmasukdetail.id_barangmasuk, barangmasukdetail.id_barang, barangmasukdetail.jumlah_barang, barangmasukdetail.keterangan_masuk, barang.* FROM barangmasukdetail INNER JOIN barang ON barangmasukdetail.id_barang = barang.id  WHERE barangmasukdetail.id_barang = '.$id.') AS bmd'), 'bmd.id_barangmasuk', '=', 'barangmasuk.id')
+            ->orderBy('tanggal', 'ASC')
+            ->get();
         $barangkeluar = BarangKeluar::select('barangkeluar.*', 'bkd.*')
-        ->join(\DB::raw('(SELECT barangkeluardetail.id_barangkeluar, barangkeluardetail.id_barang, barangkeluardetail.jumlah_barang, barangkeluardetail.keterangan_keluar, barang.* FROM barangkeluardetail  INNER JOIN barang ON barangkeluardetail.id_barang = barang.id WHERE barangkeluardetail.id_barang = '.$id.') AS bkd'), 'bkd.id_barangkeluar', '=', 'barangkeluar.id')
-        ->orderBy('tanggal', 'DESC')
-        ->get();
+            ->join(\DB::raw('(SELECT barangkeluardetail.id_barangkeluar, barangkeluardetail.id_barang, barangkeluardetail.jumlah_barang, barangkeluardetail.keterangan_keluar, barang.* FROM barangkeluardetail  INNER JOIN barang ON barangkeluardetail.id_barang = barang.id WHERE barangkeluardetail.id_barang = '.$id.') AS bkd'), 'bkd.id_barangkeluar', '=', 'barangkeluar.id')
+            ->orderBy('tanggal', 'ASC')
+            ->get();
         return view('barang.show',compact('barang','barangmasuk','barangkeluar'));
     }
 
