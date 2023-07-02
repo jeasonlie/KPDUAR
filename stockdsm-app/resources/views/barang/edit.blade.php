@@ -2,7 +2,7 @@
 @section('title', 'Edit Barang')
 @section('content')
 
-<div class="title">Edit Barang</div>
+<div class="title">Edit Barang - {{$barang->id_barangs}}</div>
 <br>
 <div class="input">
     <form action="{{ route('barang.update', ['id' => $barang->id]) }}" method="post">

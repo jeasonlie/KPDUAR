@@ -11,10 +11,10 @@
         <table>
             <tr>
                 <td>
-                    ID
+                    ID Keluar
                 </td>
                 <td>
-                &emsp;:&emsp;{{$barangkeluar->id}}
+                &emsp;:&emsp;{{$barangkeluar->id_barang_keluar}}
                 </td>
             </tr>
             <tr>
@@ -56,7 +56,7 @@
             @foreach($barangkeluar->BarangKeluarDetail as $value)
                 <tr>
                     <td>{{$value->id}}</td>
-                    <td>{{$value->id_barang}}</td>
+                    <td>{{$value->barang->id_barangs}}</td>
                     <td>{{$value->barang->nama_barang}}</td>
                     <td>{{$value->barang->kategori->nama_kategori}}</td>
                     <td><input type="text" name="jumlah_barang[]" value="{{$value->jumlah_barang}}"></td>

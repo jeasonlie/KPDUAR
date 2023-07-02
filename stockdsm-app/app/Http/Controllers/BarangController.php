@@ -27,6 +27,8 @@ class BarangController extends Controller
 
     public function store(Request $request) {
         $barang = new Barang();
+        $increment = DB::select("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA ='" . env('DB_DATABASE') . "' AND TABLE_NAME ='" . $barang->getTable() . "'")[0]->AUTO_INCREMENT;
+        $barang->id_barangs = "B".str_pad($increment,5,"0",STR_PAD_LEFT);
         $barang->nama_barang = $request->nama_barang;
         $barang->id_kategori = $request->id_kategori;
         $barang->save();

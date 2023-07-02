@@ -40,6 +40,8 @@ class BarangKeluarController extends Controller
 
             DB::beginTransaction(); 
             $barangkeluar = new barangKeluar();
+            $increment = DB::select("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA ='" . env('DB_DATABASE') . "' AND TABLE_NAME ='" . $barangkeluar->getTable() . "'")[0]->AUTO_INCREMENT;
+            $barangkeluar->id_barang_keluar = "BK".str_pad($increment,5,"0",STR_PAD_LEFT);
             $barangkeluar->tanggal = $request->tanggal_keluar;
             $barangkeluar->id_user = Auth::user()->id;
             $barangkeluar->save();

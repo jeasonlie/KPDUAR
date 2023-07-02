@@ -22,6 +22,8 @@ class BarangMasukController extends Controller
         try {
             DB::beginTransaction();
             $barangmasuk = new barangMasuk();
+            $increment = DB::select("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA ='" . env('DB_DATABASE') . "' AND TABLE_NAME ='" . $barangmasuk->getTable() . "'")[0]->AUTO_INCREMENT;
+            $barangmasuk->id_barang_masuk = "BM".str_pad($increment,5,"0",STR_PAD_LEFT);
             $barangmasuk->tanggal = $request->tanggal_masuk;
             $barangmasuk->id_user = Auth::user()->id;
             $barangmasuk->save();

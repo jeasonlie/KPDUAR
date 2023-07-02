@@ -38,6 +38,7 @@
     <thead>
         <tr>
             <th>No</th>
+            <th>ID Barang</th>
             <th>Nama Barang</th>
             <th>Kategori</th>
             <th>Total Stok</th>
@@ -49,7 +50,8 @@
     <tbody>
         @foreach($barang as $key => $value)
             <tr>
-                <td>{{$value->id}}</td>
+                <td>{{++$key}}</td>
+                <td>{{$value->id_barangs}}</td>
                 <td>{{$value->nama_barang}}</td>
                 <td>{{$value->kategori->nama_kategori}}</td>
                 <td>{{number_format($value->total_masuk-$value->total_keluar, 0 ,',', '.')}}</td>

@@ -7,10 +7,10 @@
     <table>
         <tr>
             <td>
-                ID
+                ID Barang
             </td>
             <td>
-            &emsp;:&emsp;{{$barang->id}}
+            &emsp;:&emsp;{{$barang->id_barangs}}
             </td>
         </tr>
         <tr>
@@ -30,8 +30,11 @@
             </td>
         </tr>
     </table>
+    <br>
+    <div>*Total Stok didapat dari Total Barang Masuk - Total Barang keluar</div>
+    <div>Total Stok =  {{ number_format($barang->total_masuk, 0 ,',', '.')}} - {{ number_format($barang->total_keluar, 0 ,',', '.')}}</div>
 </div>
-<br><br><br>
+<br><br>
 {{-- hapus flex-group kalo atas bawah --}}
 <div class="table-group flex-group"> 
     <div>
@@ -53,7 +56,7 @@
                 <tr class='clickable-row' data-href='{{route('barangmasuk.show', ['id' => $value->id_barangmasuk])}}'>
                         <td>{{++$key}}</td>
                         <td>{{$value->tanggal}}</td>
-                        <td>{{$value->id_barangmasuk}}</td>
+                        <td>{{$value->id_barang_masuk}}</td>
                         <td>{{ number_format($value->jumlah_barang, 0 ,',', '.')}}</td>
                         <td>{{$value->keterangan_masuk}}</td>
                     </tr>
@@ -80,7 +83,7 @@
                     <tr class='clickable-row' data-href='{{route('barangkeluar.show', ['id' => $value->id_barangkeluar])}}'>
                         <td>{{++$key}}</td>
                         <td>{{$value->tanggal}}</td>
-                        <td>{{$value->id_barangkeluar}}</td>
+                        <td>{{$value->id_barang_keluar}}</td>
                         <td>{{ number_format($value->jumlah_barang, 0 ,',', '.')}}</td>
                         <td>{{$value->keterangan_keluar}}</td>
                     </tr>

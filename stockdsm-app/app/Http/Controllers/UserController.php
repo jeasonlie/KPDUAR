@@ -23,6 +23,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
+        $increment = DB::select("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA ='" . env('DB_DATABASE') . "' AND TABLE_NAME ='" . $barang->getTable() . "'")[0]->AUTO_INCREMENT;
+        $user->id_user =  "U".str_pad($increment,5,"0",STR_PAD_LEFT);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);

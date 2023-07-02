@@ -41,6 +41,7 @@
     <thead>
         <tr>
             <th>No</th>
+            <th>ID User</th>
             <th>Nama User</th>
             <th>Email</th>
             <th>Edit</th>
@@ -51,6 +52,7 @@
         @foreach($user as $value)
         <tr>
             <td>{{$value->id}}</td>
+            <td>{{$value->id_user}}</td>
             <td>{{$value->name}}</td>
             <td>{{$value->email}}</td>
             <td><a href="{{route('user.edit', ['id' => $value->id])}}">

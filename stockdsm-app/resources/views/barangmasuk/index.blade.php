@@ -63,7 +63,8 @@
     <thead>
         <tr>
             <th>No</th>
-            <th>Tanggal</th>
+            <th>ID Masuk</th>
+            <th>Tanggal Masuk</th>
             <th>Total Barang</th>
             <th>Diinput Oleh</th>
             <th>Detail</th>
@@ -74,6 +75,7 @@
         @foreach($barangmasuk as $value)
             <tr>
                 <td>{{$value->id}}</td>
+                <td>{{$value->id_barang_masuk}}</td>
                 <td>{{$value->tanggal}}</td>
                 <td>{{number_format(count($value->barangmasukdetail), 0 ,',', '.')}}</td>
                 <td>{{$value->User->name}}</td>
