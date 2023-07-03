@@ -84,13 +84,31 @@
         modal.classList.toggle('hidden');
         modal.innerHTML = `
             <div class="modal-content" style="gap: 8px;">
-                <h2>Delete ${title}</h2>
-                <p>Apakah anda yakin ingin menghapus ${title} ini?</p>
+                <h2>Nonaktif ${title}</h2>
+                <p>Apakah anda yakin ingin menonaktifkan ${title} ini?</p>
                 <div class="button flex-row" style="padding-top:10px; gap:10px">
                     <form action="${link}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" class="btn" value="Hapus">
+                        <input type="submit" class="btn" value="Nonaktif" style="width:fit-content">
+                    </form>
+                    <button class="clickable btn" id="batal" onclick="modalLogoutToggle()">Batal</button>
+                </div>
+            </div>
+        `;
+    }
+    function modal_aktif(title,id,link) {
+        const modal = document.querySelector('.modal');
+        modal.classList.toggle('hidden');
+        modal.innerHTML = `
+            <div class="modal-content" style="gap: 8px;">
+                <h2>Aktif ${title}</h2>
+                <p>Apakah anda yakin ingin mengaktifkan ${title} ini?</p>
+                <div class="button flex-row" style="padding-top:10px; gap:10px">
+                    <form action="${link}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <input type="submit" class="btn" value="Aktif" style="width:fit-content">
                     </form>
                     <button class="clickable btn" id="batal" onclick="modalLogoutToggle()">Batal</button>
                 </div>

@@ -68,12 +68,32 @@ class BarangController extends Controller
         return view('barang.show',compact('barang','barangmasuk','barangkeluar'));
     }
 
+    public function histori() {
+        $barang = Barang::select('barang.*')->with('kategori')
+        ->leftJoin(DB::raw('(SELECT barangmasukdetail.id_barang, SUM(barangmasukdetail.jumlah_barang) AS total_masuk FROM barangmasukdetail GROUP BY barangmasukdetail.id_barang) AS masuk_detail'), 'masuk_detail.id_barang', '=', 'barang.id')
+        ->leftJoin(DB::raw('(SELECT barangkeluardetail.id_barang, SUM(barangkeluardetail.jumlah_barang) AS total_keluar FROM barangkeluardetail GROUP BY barangkeluardetail.id_barang) AS keluar_detail'), 'keluar_detail.id_barang', '=', 'barang.id')
+        ->selectRaw('IFNULL(masuk_detail.total_masuk, 0) AS total_masuk, IFNULL(keluar_detail.total_keluar, 0) AS total_keluar')
+        ->where('is_deleted', 1)
+        ->get();
+        $kategori = Kategori::all();
+        return view('barang.histori', compact('barang'));
+    }
+
+    public function aktif($id) {
+        $barang = Barang::find($id);
+        $barang->is_deleted = 0;
+        $barang->save();
+
+        Session::flash('message', 'Barang berhasil diaktifkan!');
+        return redirect()->route('barang.index');
+    }
+
     public function destroy($id) {
         $barang = Barang::find($id);
         $barang->is_deleted = 1;
         $barang->save();
 
-        Session::flash('message', 'Barang berhasil dihapus!');
+        Session::flash('message', 'Barang berhasil dinonaktifkan!');
         return redirect()->route('barang.index');
     }
 }

@@ -2,42 +2,13 @@
 @section('title', 'Barang')
 @section('content')
 
-<div class="title">Barang</div>
+<div class="title">Histori Barang</div>
 <br>
-<div class="input" style="position:relative">
-    <form action="{{ route('barang.store') }}" method="post">
-        @csrf
-        <table class="tabel-form">
-            <tr>
-                <td>
-                <label for="">Nama Barang</label>
-                </td>
-                <td>
-                <input type="text" name="nama_barang" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                <label for="">Kategori</label>
-                </td>
-                <td>
-                    <select name="id_kategori" id="">
-                    @foreach($kategori as $value)
-                    <option value="{{$value->id}}">{{$value->nama_kategori}}</option>
-                    @endforeach
-                    </select>
-                </td>
-            </tr>
-        </table>
-        <br>
-        <button type="submit">Tambah</button>
-        <a href="{{route('barang.histori')}}">
-            <div class="histori" style="margin-top:10px; position:absolute; top:0px; right:105px ">
-                Histori Barang
-            </div>
-        </a>
-    </form>
-</div>
+<a href="{{route('barang.index')}}">
+    <div class="kembali">
+        Kembali ke halaman Barang
+    </div>
+</a>
 <br><br><br>
 <table id="isiTabel">
     <thead>
@@ -51,7 +22,7 @@
             <th>Stok Sekarang</th>
             <th>Detail Stok</th>
             <th>Edit</th>
-            <th>Nonaktif</th>
+            <th>Aktif</th>
         </tr>
     </thead>
     <tbody>
@@ -75,12 +46,13 @@
                     </div>
                 </a></td>
                 <td>
-                    <div class="hapus" onclick="modal_delete('barang',{{$value->id}}, '{{route('barang.destroy', ['id'=> $value->id])}}')" style="cursor:pointer">
-                        Nonaktif
+                    <div class="hapus" onclick="modal_aktif('barang',{{$value->id}}, '{{route('barang.aktif', ['id'=> $value->id])}}')" style="cursor:pointer">
+                        Aktif
                     </div>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
 @endsection
